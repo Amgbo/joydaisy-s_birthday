@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎉</title>
+
+  <!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Sacramento&family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #fbeffb, #e1f5fe);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      color: #333;
+      overflow-x: hidden;
+      font-size: 16px;
+    }
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 3em;
+  color: #e91e63;
+  margin-top: 20px;
+  text-shadow: 2px 2px #ffc0cb;
+}
+
+
+
+
+    video, audio {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 20px auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+.message {
+  display: none;
+  font-size: 1.6em;
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  line-height: 1.4em;
+  margin-top: 20px;
+  color: #8e2e6f;
+  text-shadow: 1px 1px 0 #f8c0e0, -1px -1px 0 #f8c0e0;
+  animation: fadeIn 2s ease-in-out;
+  padding: 0 10px;
+  z-index: 2;
+  position: relative;
+}
+
+
+
+
+
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: pink;
+      position: fixed;
+      top: 100vh;
+      left: 50%;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: pink;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      animation: rise 18s linear forwards;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    #balloons-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #confetti {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+h1, .message, .plain-message {
+  text-shadow: 1px 1px 2px #ffc0cb, 0 0 25px #ff69b4, 0 0 5px #ff1493;
+}
+
+
+.plain-message {
+  font-family: 'Sacramento', cursive;
+  font-size: 1.8em;
+  line-height: 1.4em;
+  color: #6a1b9a;
+  text-shadow: 1px 1px 0 #d48ec9, -1px -1px 0 #d48ec9;
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+<div id="hearts-container"></div>
+<div id="balloons-container"></div>
+
+<h1>Happy Birthday 🎂</h1>
+<p>
+  I thought I’d try something different this year, so I made this little birthday page for you.<br>
+  Just smile. You deserve it. 💖
+</p>
+
+<!-- 🎁 Surprise Reveal -->
+<br><br>
+<button onclick="reveal()">Click to unlock your surprise 🎁</button>
+
+<div class="message" id="birthdayMessage">
+  <!-- 🎥 Video -->
+  <video controls poster="thumbnail.jpg">
+    <source src="tinnel.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- 🎧 Audio -->
+  <audio controls>
+    <source src="your-voice.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 💬 Message -->
+  <p class="plain-message">
+    <strong>Joy Daisy,</strong><br>
+    I remember your words 😊 Every one of them.<br>
+    you still made me feel seen.<br><br>
+    So now it’s my turn.<br><br>
+    I may not say much these days, but if this little page says anything, let it say this:<br>
+    You matter. You’re still one of the kindest lights in my life.<br><br>
+    And today? Today is about you feeling just a bit more special.<br><br>
+    You deserve that.<br><br>
+    <em> Someone who never forgot. 🌼</em>
+  </p>
+</div>
+
+<!-- ✨ Bonus Message -->
+<br><br>
+<button onclick="showBonus()">One more thing...</button>
+
+<div class="message" id="bonusMessage">
+  Take it easy on yourself. You're doing better than you know.  
+  <br>From someone who still roots for you from afar 💫
+</div>
+
+<script>
+  function reveal() {
+    document.getElementById("birthdayMessage").style.display = "block";
+    startConfetti();
+    createBalloons();
+  }
+
+  function showBonus() {
+    document.getElementById("bonusMessage").style.display = "block";
+  }
+
+  function startConfetti() {
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let pieces = [];
+    for (let i = 0; i < 100; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 6 + 4,
+        d: Math.random() * 20 + 10,
+        color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+        tilt: Math.random() * 10 - 10
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        ctx.beginPath();
+        ctx.fillStyle = p.color;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        p.y += Math.cos(p.d);
+        p.x += Math.sin(p.d);
+        if (p.y > canvas.height) {
+          p.y = 0;
+          p.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  }
+
+  function createHearts() {
+    const container = document.getElementById('hearts-container');
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 500);
+  }
+
+  function createBalloons(count = 50) {
+    const container = document.getElementById('balloons-container');
+    const balloonImgs = ["balloon1.png", "balloon2.png", "balloon3.png"];
+
+    for (let i = 0; i < count; i++) {
+      const img = document.createElement('img');
+      img.src = balloonImgs[Math.floor(Math.random() * balloonImgs.length)];
+      img.className = 'balloon';
+      img.style.left = Math.random() * 100 + 'vw';
+      img.style.bottom = Math.random() * -150 + 'px';
+      img.style.animationDelay = (Math.random() * 5) + 's';
+      img.style.width = (40 + Math.random() * 20) + 'px';
+      container.appendChild(img);
+      setTimeout(() => img.remove(), 20000);
+    }
+  }
+
+  createHearts();
+</script>
+
+</body>
+</html>
