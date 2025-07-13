@@ -195,7 +195,7 @@
 </div>
 
 <!-- 🎶 Background Music -->
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
   <source src="background.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -278,22 +278,23 @@
       setTimeout(() => img.remove(), 20000);
     }
   }
-  const video = document.querySelector("video");
-const bgMusic = document.getElementById("bgMusic");
 
-// When video ends, try to resume the background music
-video.addEventListener("ended", () => {
-  bgMusic.play().catch(e => {
-    console.log("Background music could not resume:", e);
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector("video");
+    const bgMusic = document.getElementById("bgMusic");
+
+    video.addEventListener("ended", () => {
+      bgMusic.play().catch(e => {
+        console.log("Background music could not resume:", e);
+      });
+    });
+
+    video.addEventListener("pause", () => {
+      if (video.currentTime < video.duration) {
+        bgMusic.play().catch(() => {});
+      }
+    });
   });
-});
-
-  video.addEventListener("pause", () => {
-  if (video.currentTime < video.duration) { // if not end of video
-    bgMusic.play().catch(() => {});
-  }
-});
-
 
   createHearts();
 </script>
