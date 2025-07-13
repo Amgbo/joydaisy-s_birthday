@@ -28,7 +28,7 @@
       text-shadow: 2px 2px #ffc0cb;
     }
 
-    video, audio {
+    video {
       width: 100%;
       max-width: 300px;
       height: auto;
@@ -73,8 +73,8 @@
     }
 
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .heart {
@@ -103,14 +103,8 @@
     .heart::after { left: -10px; top: 0; }
 
     @keyframes float {
-      0% {
-        transform: translateY(0) rotate(45deg);
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(-120vh) rotate(45deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(45deg); opacity: 0.7; }
+      100% { transform: translateY(-120vh) rotate(45deg); opacity: 0; }
     }
 
     .balloon {
@@ -123,14 +117,8 @@
     }
 
     @keyframes rise {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-120vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
     }
 
     #balloons-container, #hearts-container {
@@ -170,22 +158,16 @@
   Just smile. You deserve it. 💖
 </p>
 
-<!-- 🎁 Surprise Reveal -->
+<!-- 🏱 Surprise Reveal -->
 <br><br>
-<button onclick="reveal()">Click to unlock your surprise 🎁</button>
+<button onclick="reveal()">Click to unlock your surprise 🏱</button>
 
 <div class="message" id="birthdayMessage">
   <!-- 🎥 Video -->
-  <video controls poster="tinnel profile.jpg">
+  <video controls playsinline webkit-playsinline poster="tinnel profile.jpg">
     <source src="tinnel.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-
-  <!-- 🎧 Voice Note -->
-  <audio controls>
-    <source src="your-voice.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 
   <!-- 💬 Message -->
   <p class="plain-message">
@@ -209,10 +191,10 @@
 
 <div class="message" id="bonusMessage">
   Take it easy on yourself. You're doing better than you think.  
-  <br>From someone who’s still quietly rooting for you 💫
+  <br>From someone who’s still quietly rooting for you 🌛
 </div>
 
-<!-- 🎶 Background Music (Autoplays on Reveal) -->
+<!-- 🎶 Background Music -->
 <audio id="bgMusic" loop>
   <source src="background.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
